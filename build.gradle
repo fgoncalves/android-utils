@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.1.4-3'
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.2'
+        // Version 2.0 requires gradle plugin 3
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+project.ext.androidCompileSDKVersion = 26
+project.ext.androidBuildToolsVersion = "26.0.1"
+project.ext.androidMinSDKVersion = 16
+project.ext.androidTargetSDKVersion = 26
+project.ext.versionCode = 1
+project.ext.versionName = "1.0"

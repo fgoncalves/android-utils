@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from: "$rootProject.projectDir/libraries.gradle"
+
+android {
+    compileSdkVersion project.androidCompileSDKVersion
+    buildToolsVersion project.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.androidMinSDKVersion
+        targetSdkVersion project.androidTargetSDKVersion
+        versionCode project.versionCode
+        versionName project.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    compile project.libraries.kotlin_std_lib
+
+    compile project.libraries.rx
+    compile project.libraries.rxandroid
+    compile project.libraries.junit
+
+    testCompile project.libraries.junit
+    testCompile project.libraries.assertj
+}
+
+apply from: "$rootProject.projectDir/maven-aar.gradle"
