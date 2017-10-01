@@ -1,1 +1,1 @@
-include ':testrules'
+include ':testrules', ':pathmanager'
